@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carolina Maria de Jesus | Uma Voz Transformadora</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#121212',
+                            card: '#1e1e1e',
+                            light: '#f5f5f0',
+                            accent: '#c08457', // Earthy bronze/copper
+                            accentHover: '#a36b43'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles for Animations and Details -->
+    <style>
+        body {
+            background-color: #121212;
+            color: #f5f5f0;
+            overflow-x: hidden;
+        }
+        
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline Styles */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #c08457;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c08457;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a36b43;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-brand-dark/90 backdrop-blur-md border-b border-brand-accent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#inicio" class="font-serif text-2xl font-bold text-brand-accent tracking-wider">YF STUDIOS</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 text-sm font-semibold tracking-wide">
+                    <a href="#inicio" class="hover:text-brand-accent transition-colors">INÍCIO</a>
+                    <a href="#biografia" class="hover:text-brand-accent transition-colors">BIOGRAFIA</a>
+                    <a href="#obras" class="hover:text-brand-accent transition-colors">OBRAS</a>
+                    <a href="#linha-do-tempo" class="hover:text-brand-accent transition-colors">LINHA DO TEMPO</a>
+                    <a href="#galeria" class="hover:text-brand-accent transition-colors">GALERIA</a>
+                    <a href="#legado" class="hover:text-brand-accent transition-colors">LEGADO</a>
+                    <a href="#quiz" class="hover:text-brand-accent transition-colors">QUIZ</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 border-b border-brand-accent/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center flex flex-col">
+                <a href="#inicio" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">INÍCIO</a>
+                <a href="#biografia" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">BIOGRAFIA</a>
+                <a href="#obras" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">OBRAS</a>
+                <a href="#linha-do-tempo" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">LINHA DO TEMPO</a>
+                <a href="#galeria" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">GALERIA</a>
+                <a href="#legado" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">LEGADO</a>
+                <a href="#quiz" class="block px-3 py-2 text-base font-medium hover:text-brand-accent">QUIZ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-accent via-brand-dark to-brand-dark"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 reveal">
+                CAROLINA MARIA DE JESUS
+            </h1>
+            <p class="text-xl md:text-3xl font-light text-brand-accent mb-8 italic reveal" style="transition-delay: 200ms;">
+                "Uma voz que transformou a própria realidade em literatura."
+            </p>
+            <div class="max-w-3xl mx-auto text-gray-300 space-y-4 reveal" style="transition-delay: 400ms;">
+                <p>
+                    O Brasil de meados do século XX passava por intenso crescimento urbano e migração. Nas sombras do 'progresso' de São Paulo, formavam-se as favelas. Foi nesse cenário de extrema desigualdade social que surgiu uma das maiores e mais potentes vozes da literatura brasileira.
+                </p>
+                <a href="#biografia" class="inline-block mt-8 px-8 py-3 bg-brand-accent hover:bg-brand-accentHover text-white rounded-full transition-all duration-300 font-semibold shadow-[0_0_15px_rgba(192,132,87,0.5)]">
+                    Conheça sua história <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biografia Section -->
+    <section id="biografia" class="py-20 bg-brand-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center mb-16 text-brand-accent reveal">Biografia</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <img src="https://placehold.co/600x800/121212/c08457?text=Retrato+de+Carolina" alt="Retrato de Carolina Maria de Jesus" class="rounded-xl shadow-2xl w-full object-cover border border-brand-accent/30">
+                </div>
+                <div class="space-y-6 text-gray-300 text-lg reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-serif text-white">De Sacramento ao Canindé</h3>
+                    <p>
+                        Nascida em 1914 em Sacramento, Minas Gerais, Carolina teve uma infância marcada pela pobreza. Frequentou a escola por apenas dois anos, tempo suficiente para se apaixonar pela leitura e pela escrita. 
+                    </p>
+                    <p>
+                        Após a morte da mãe e peregrinações por cidades do interior, migrou para São Paulo em 1937, buscando melhores condições. Estabeleceu-se na <strong>Favela do Canindé</strong> (onde hoje passa a Marginal Tietê).
+                    </p>
+                    <h3 class="text-2xl font-serif text-white pt-4">Lixo, Letras e Sobrevivência</h3>
+                    <p>
+                        Mãe solo de três filhos (João José, José Carlos e Vera Eunice), sustentava a família como catadora de papel. Nos lixões, encontrava não apenas papelão para vender, mas cadernos velhos que transformava em refúgio.
+                    </p>
+                    <p>
+                        Sua escrita possui uma <strong>linguagem simples, direta e crua</strong>. Sem filtros acadêmicos, ela registrava o cotidiano da favela: a busca obsessiva por comida, a violência, o racismo e a solidariedade, criando um documento histórico e literário inigualável.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Obras Section -->
+    <section id="obras" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center mb-16 text-brand-accent reveal">Obras e Impacto</h2>
+            
+            <!-- Quarto de Despejo Feature -->
+            <div class="bg-brand-card rounded-2xl p-8 md:p-12 border border-brand-accent/20 mb-16 shadow-xl reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-1 text-center">
+                        <img src="https://placehold.co/400x600/1a1a1a/e5e5e5?text=Capa+Quarto+de+Despejo" alt="Capa Quarto de Despejo" class="rounded-lg shadow-lg mx-auto w-2/3 lg:w-full">
+                    </div>
+                    <div class="lg:col-span-2 space-y-4">
+                        <h3 class="text-3xl font-serif text-brand-accent">Quarto de Despejo: Diário de uma Favelada (1960)</h3>
+                        <p class="text-gray-300 text-lg">
+                            Descoberta em 1958 pelo jornalista <strong>Audálio Dantas</strong>, Carolina teve seus diários editados e publicados em 1960. O livro foi um estrondo imediato: vendeu dezenas de milhares de cópias em semanas.
+                        </p>
+                        <p class="text-gray-300 text-lg">
+                            A obra é um relato autobiográfico dilacerante. Carolina compara a favela a um "quarto de despejo" da cidade — o lugar para onde a sociedade joga o que não quer ver. Relata a fome de forma vívida: <em>"A cor da fome é amarela."</em>
+                        </p>
+                        <div class="flex flex-wrap gap-4 mt-6">
+                            <span class="px-4 py-2 bg-brand-dark rounded-full text-sm text-brand-accent border border-brand-accent/30"><i class="fas fa-globe mr-2"></i>Traduzido para 16+ idiomas</span>
+                            <span class="px-4 py-2 bg-brand-dark rounded-full text-sm text-brand-accent border border-brand-accent/30"><i class="fas fa-book-open mr-2"></i>Sucesso de Vendas Global</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outras Obras Grid -->
+            <h3 class="text-2xl font-serif text-center mb-8 reveal">Obras Completas e Póstumas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal" style="transition-delay: 200ms;">
+                <div class="bg-brand-card p-6 rounded-xl border border-brand-accent/10 hover:border-brand-accent transition-colors group">
+                    <h4 class="text-xl font-bold mb-2 group-hover:text-brand-accent">Casa de Alvenaria (1961)</h4>
+                    <p class="text-sm text-gray-400">O diário de sua vida após o sucesso, as dificuldades de adaptação e o preconceito da classe média.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-xl border border-brand-accent/10 hover:border-brand-accent transition-colors group">
+                    <h4 class="text-xl font-bold mb-2 group-hover:text-brand-accent">Pedaços da Fome (1963)</h4>
+                    <p class="text-sm text-gray-400">Seu primeiro romance ficcional. Conta a história de uma moça rica que abandona a família por um falso dentista e acaba na miséria.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-xl border border-brand-accent/10 hover:border-brand-accent transition-colors group">
+                    <h4 class="text-xl font-bold mb-2 group-hover:text-brand-accent">Provérbios (1963)</h4>
+                    <p class="text-sm text-gray-400">Coletânea de reflexões e frases filosóficas criadas por Carolina baseadas em suas vivências.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-xl border border-brand-accent/10 hover:border-brand-accent transition-colors group">
+                    <h4 class="text-xl font-bold mb-2 group-hover:text-brand-accent">Diário de Bitita (1982)</h4>
+                    <p class="text-sm text-gray-400">Publicado postumamente na França, relata memórias de sua infância e juventude em Minas Gerais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha do Tempo Section -->
+    <section id="linha-do-tempo" class="py-20 bg-brand-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center mb-16 text-brand-accent reveal">Linha do Tempo</h2>
+            
+            <div class="relative timeline-container max-w-4xl mx-auto">
+                
+                <!-- Event 1 -->
+                <div class="relative z-10 mb-8 md:mb-16 w-full flex justify-between items-center reveal left-timeline md:flex-row-reverse">
+                    <div class="order-1 hidden md:block md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-brand-dark shadow-xl w-10 h-10 rounded-full border-4 border-brand-accent md:mx-auto">
+                        <h1 class="mx-auto font-semibold text-lg text-white">14</h1>
+                    </div>
+                    <div class="order-1 bg-brand-dark border border-brand-accent/20 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 ml-12 md:ml-0">
+                        <h3 class="font-bold text-brand-accent text-xl">1914</h3>
+                        <p class="text-sm leading-snug text-gray-300 mt-2">Nascimento em Sacramento (MG) em 14 de março. Registrada com data incerta, mas celebrava nesta data.</p>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="relative z-10 mb-8 md:mb-16 w-full flex justify-between items-center reveal right-timeline">
+                    <div class="order-1 hidden md:block md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-brand-dark shadow-xl w-10 h-10 rounded-full border-4 border-brand-accent md:mx-auto">
+                        <h1 class="mx-auto font-semibold text-lg text-white">37</h1>
+                    </div>
+                    <div class="order-1 bg-brand-dark border border-brand-accent/20 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 ml-12 md:ml-0">
+                        <h3 class="font-bold text-brand-accent text-xl">1937 - 1947</h3>
+                        <p class="text-sm leading-snug text-gray-300 mt-2">Muda-se para São Paulo e em 1947 estabelece-se na Favela do Canindé. Nasce seu primeiro filho, João José.</p>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="relative z-10 mb-8 md:mb-16 w-full flex justify-between items-center reveal left-timeline md:flex-row-reverse">
+                    <div class="order-1 hidden md:block md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-brand-dark shadow-xl w-10 h-10 rounded-full border-4 border-brand-accent md:mx-auto">
+                        <h1 class="mx-auto font-semibold text-lg text-white">58</h1>
+                    </div>
+                    <div class="order-1 bg-brand-dark border border-brand-accent/20 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 ml-12 md:ml-0">
+                        <h3 class="font-bold text-brand-accent text-xl">1958</h3>
+                        <p class="text-sm leading-snug text-gray-300 mt-2">Audálio Dantas descobre Carolina durante uma reportagem na favela do Canindé e lê seus diários.</p>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="relative z-10 mb-8 md:mb-16 w-full flex justify-between items-center reveal right-timeline">
+                    <div class="order-1 hidden md:block md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-brand-dark shadow-xl w-10 h-10 rounded-full border-4 border-brand-accent md:mx-auto">
+                        <h1 class="mx-auto font-semibold text-lg text-white">60</h1>
+                    </div>
+                    <div class="order-1 bg-brand-dark border border-brand-accent/20 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 ml-12 md:ml-0">
+                        <h3 class="font-bold text-brand-accent text-xl">1960</h3>
+                        <p class="text-sm leading-snug text-gray-300 mt-2">Publicação de "Quarto de Despejo". Sucesso imediato no Brasil e logo exportado para o mundo.</p>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="relative z-10 mb-8 md:mb-16 w-full flex justify-between items-center reveal left-timeline md:flex-row-reverse">
+                    <div class="order-1 hidden md:block md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-brand-dark shadow-xl w-10 h-10 rounded-full border-4 border-brand-accent md:mx-auto">
+                        <h1 class="mx-auto font-semibold text-lg text-white">77</h1>
+                    </div>
+                    <div class="order-1 bg-brand-dark border border-brand-accent/20 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 ml-12 md:ml-0">
+                        <h3 class="font-bold text-brand-accent text-xl">1977</h3>
+                        <p class="text-sm leading-snug text-gray-300 mt-2">Falece em Parelheiros (SP), aos 62 anos, esquecida pelo mercado editorial e vivendo no campo, mas deixando um legado eterno.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Section -->
+    <section id="galeria" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center mb-16 text-brand-accent reveal">Galeria e Manuscritos</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Carolina+Escrevendo" alt="Carolina escrevendo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Carolina registrando seus pensamentos</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card" style="transition-delay: 100ms;">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Manuscrito+Original" alt="Manuscrito" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Página de um dos seus cadernos recuperados do lixo</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card" style="transition-delay: 200ms;">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Favela+do+Caninde" alt="Favela do Canindé" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Registro histórico da Favela do Canindé (anos 50)</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Noite+de+Autografos" alt="Autógrafos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Noite de autógrafos, onde assinou centenas de livros</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card" style="transition-delay: 100ms;">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Carolina+e+Filhos" alt="Carolina e família" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Carolina com seus três filhos</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-square reveal bg-brand-card" style="transition-delay: 200ms;">
+                    <img src="https://placehold.co/600x600/1e1e1e/c08457?text=Arte+Inspirada" alt="Arte sobre Carolina" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-serif text-lg">Mural de arte urbana em homenagem à escritora</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-gray-400 text-sm mt-8 reveal">* Os manuscritos ajudam pesquisadores a entender a genialidade e a grafia original de Carolina, que muitas vezes foi alterada por editores.</p>
+        </div>
+    </section>
+
+    <!-- Legado Section -->
+    <section id="legado" class="py-20 bg-brand-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-serif font-bold text-center mb-16 text-brand-accent reveal">Carolina Além da Literatura</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-dark p-8 rounded-xl border border-brand-accent/20 text-center reveal">
+                    <i class="fas fa-venus-mars text-4xl text-brand-accent mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Mulher Negra e Voz</h3>
+                    <p class="text-gray-300 text-sm">Sua obra é fundamental para estudos sobre racismo estrutural, desigualdade de gênero e classe. Deu voz à realidade marginalizada muito antes dos termos modernos de interseccionalidade.</p>
+                </div>
+                <div class="bg-brand-dark p-8 rounded-xl border border-brand-accent/20 text-center reveal" style="transition-delay: 150ms;">
+                    <i class="fas fa-music text-4xl text-brand-accent mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Música e Poesia</h3>
+                    <p class="text-gray-300 text-sm">Carolina era multifacetada. Gravou um disco de sambas de sua autoria (também chamado "Quarto de Despejo" em 1961), escreveu letras de música, peças de teatro e dezenas de poemas.</p>
+                </div>
+                <div class="bg-brand-dark p-8 rounded-xl border border-brand-accent/20 text-center reveal" style="transition-delay: 300ms;">
+                    <i class="fas fa-graduation-cap text-4xl text-brand-accent mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Estudos e Academias</h3>
+                    <p class="text-gray-300 text-sm">Hoje, seus livros são leituras obrigatórias em vestibulares (como Unicamp e UFRGS) e base para dissertações de mestrado e teses em sociologia e literatura pelo mundo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curiosidades & Glossário -->
+    <section id="curiosidades" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Curiosidades -->
+                <div class="reveal">
+                    <h2 class="text-3xl font-serif font-bold mb-8 text-brand-accent"><i class="fas fa-lightbulb mr-3"></i>Você sabia?</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start bg-brand-card p-4 rounded-lg border-l-4 border-brand-accent">
+                            <span class="text-gray-300"><strong>Leitora Voraz:</strong> Ela adorava ler obras de Machado de Assis, José de Alencar e Casimiro de Abreu, livros que encontrava no lixo.</span>
+                        </li>
+                        <li class="flex items-start bg-brand-card p-4 rounded-lg border-l-4 border-brand-accent">
+                            <span class="text-gray-300"><strong>Edições Mundiais:</strong> Quarto de Despejo foi lançado em países como EUA, Alemanha, França, Japão e Rússia.</span>
+                        </li>
+                        <li class="flex items-start bg-brand-card p-4 rounded-lg border-l-4 border-brand-accent">
+                            <span class="text-gray-300"><strong>O Título:</strong> "Quarto de despejo" era o termo que ela usava para se referir à favela, enquanto o centro da cidade seria a "sala de visita".</span>
+                        </li>
+                        <li class="flex items-start bg-brand-card p-4 rounded-lg border-l-4 border-brand-accent">
+                            <span class="text-gray-300"><strong>Descoberta:</strong> Seus diários continham mais de 20 cadernos quando foram encontrados por Audálio Dantas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Glossário -->
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <h2 class="text-3xl font-serif font-bold mb-8 text-brand-accent"><i class="fas fa-book mr-3"></i>Glossário</h2>
+                    <dl class="space-y-4">
+                        <div class="bg-brand-card p-4 rounded-lg">
+                            <dt class="font-bold text-white text-lg">Favela</dt>
+                            <dd class="text-gray-400 text-sm mt-1">Assentamentos urbanos informais, caracterizados historicamente pela ausência de infraestrutura básica, formados muitas vezes pela exclusão social e imobiliária.</dd>
+                        </div>
+                        <div class="bg-brand-card p-4 rounded-lg">
+                            <dt class="font-bold text-white text-lg">Diário</dt>
+                            <dd class="text-gray-400 text-sm mt-1">Registro escrito de vivências cotidianas, geralmente em ordem cronológica, focado em reflexões íntimas ou eventos diários.</dd>
+                        </div>
+                        <div class="bg-brand-card p-4 rounded-lg">
+                            <dt class="font-bold text-white text-lg">Autobiografia</dt>
+                            <dd class="text-gray-400 text-sm mt-1">Obra em que o autor narra a história de sua própria vida, como fez Carolina.</dd>
+                        </div>
+                        <div class="bg-brand-card p-4 rounded-lg">
+                            <dt class="font-bold text-white text-lg">Manuscrito</dt>
+                            <dd class="text-gray-400 text-sm mt-1">Documento original escrito à mão pelo autor, antes de ser digitado ou impresso.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interativo -->
+    <section id="quiz" class="py-20 bg-brand-card border-t border-brand-accent/20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl font-serif font-bold text-brand-accent mb-4">Teste seus Conhecimentos</h2>
+                <p class="text-gray-300">O quanto você aprendeu sobre Carolina Maria de Jesus?</p>
+            </div>
+
+            <div id="quiz-container" class="bg-brand-dark p-8 rounded-2xl shadow-2xl border border-brand-accent/30 reveal">
+                <!-- Perguntas injetadas via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Conclusão -->
+    <footer class="bg-black pt-16 pb-8 border-t border-brand-accent/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-serif font-bold text-white mb-6">O que aprendemos com Carolina?</h2>
+            <p class="max-w-3xl mx-auto text-gray-400 text-lg mb-12 italic">
+                "Carolina Maria de Jesus transformou experiências cruéis em palavras, deixando um dos mais importantes registros da sociedade brasileira. Ela nos ensina sobre a força da escrita como ferramenta de resistência, sobrevivência e denúncia. Sua obra continua viva, lida e necessária para entendermos o Brasil."
+            </p>
+            
+            <div class="border-t border-gray-800 pt-8 mt-8 text-sm text-gray-500">
+                <h4 class="font-bold text-gray-400 mb-2">Fontes e Referências para pesquisa:</h4>
+                <ul class="flex flex-wrap justify-center gap-4 mb-8">
+                    <li>Livro: <em>Quarto de Despejo</em> (Ed. Ática)</li>
+                    <li>Biografia: <em>Carolina: Uma biografia</em> (Tom Farias)</li>
+                    <li>Instituto Moreira Salles (IMS) - Acervo Carolina</li>
+                </ul>
+                <p>&copy; 2026 Projeto Educacional e Biográfico | Construído com HTML, Tailwind e JS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // 2. Navbar Background on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+            });
+
+            // 3. Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: stop observing once revealed
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            };
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver(revealCallback, revealOptions);
+            revealElements.forEach(el => observer.observe(el));
+
+            // 4. Interactive Quiz Logic
+            const quizData = [
+                {
+                    question: "Onde Carolina Maria de Jesus nasceu?",
+                    options: ["São Paulo, SP", "Sacramento, MG", "Rio de Janeiro, RJ", "Salvador, BA"],
+                    correct: 1 // index 1
+                },
+                {
+                    question: "Qual é a sua obra mais conhecida, publicada em 1960?",
+                    options: ["Casa de Alvenaria", "Pedaços da Fome", "Diário de Bitita", "Quarto de Despejo"],
+                    correct: 3
+                },
+                {
+                    question: "Em qual favela de São Paulo ela viveu a maior parte de sua vida adulta?",
+                    options: ["Favela da Rocinha", "Favela do Canindé", "Paraisópolis", "Heliópolis"],
+                    correct: 1
+                },
+                {
+                    question: "Que profissão ela exercia para sustentar seus três filhos?",
+                    options: ["Costureira", "Cozinheira", "Catadora de papel", "Professora"],
+                    correct: 2
+                },
+                {
+                    question: "O que Carolina escrevia nos cadernos que encontrava no lixo?",
+                    options: ["Receitas culinárias", "O cotidiano da favela (Diários)", "Contos de fadas", "Apenas listas de compras"],
+                    correct: 1
+                }
+            ];
+
+            const quizContainer = document.getElementById('quiz-container');
+            let currentQuestion = 0;
+            let score = 0;
+
+            function loadQuiz() {
+                if (currentQuestion >= quizData.length) {
+                    showResult();
+                    return;
+                }
+
+                const q = quizData[currentQuestion];
+                let optionsHtml = '';
+                
+                q.options.forEach((opt, index) => {
+                    optionsHtml += `
+                        <label class="block p-4 border border-brand-accent/20 rounded-lg cursor-pointer hover:bg-brand-accent/10 transition-colors mb-3">
+                            <input type="radio" name="quiz-option" value="${index}" class="mr-3 accent-brand-accent">
+                            <span class="text-white">${opt}</span>
+                        </label>
+                    `;
+                });
+
+                quizContainer.innerHTML = `
+                    <div class="mb-6">
+                        <span class="text-brand-accent font-bold text-sm">PERGUNTA ${currentQuestion + 1} DE ${quizData.length}</span>
+                        <h3 class="text-2xl font-serif text-white mt-2">${q.question}</h3>
+                    </div>
+                    <div class="mb-6">
+                        ${optionsHtml}
+                    </div>
+                    <button id="next-btn" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                        Responder
+                    </button>
+                    <p id="error-msg" class="text-red-400 text-sm mt-3 hidden text-center">Por favor, selecione uma opção.</p>
+                `;
+
+                document.getElementById('next-btn').addEventListener('click', checkAnswer);
+            }
+
+            function checkAnswer() {
+                const selectedOption = document.querySelector('input[name="quiz-option"]:checked');
+                const errorMsg = document.getElementById('error-msg');
+                
+                if (!selectedOption) {
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+                
+                errorMsg.classList.add('hidden');
+                
+                if (parseInt(selectedOption.value) === quizData[currentQuestion].correct) {
+                    score++;
+                }
+
+                currentQuestion++;
+                loadQuiz();
+            }
+
+            function showResult() {
+                let message = "";
+                if(score === 5) message = "Perfeito! Você prestou muita atenção.";
+                else if(score >= 3) message = "Muito bom! Você conhece bem a história dela.";
+                else message = "Vale a pena reler a biografia para aprender mais!";
+
+                quizContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-award text-6xl text-brand-accent mb-4"></i>
+                        <h3 class="text-3xl font-serif text-white mb-2">Quiz Concluído!</h3>
+                        <p class="text-xl text-gray-300 mb-6">Você acertou <span class="text-brand-accent font-bold text-2xl">${score}</span> de ${quizData.length} perguntas.</p>
+                        <p class="text-white italic mb-8">${message}</p>
+                        <button onclick="location.reload()" class="bg-brand-card border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white font-bold py-2 px-6 rounded-full transition-colors">
+                        Tentar Novamente
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Init Quiz
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>
